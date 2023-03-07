@@ -1,4 +1,4 @@
-package com.test.pokemongo.ui.base
+package com.test.newsapp.ui.base
 
 import android.os.Bundle
 

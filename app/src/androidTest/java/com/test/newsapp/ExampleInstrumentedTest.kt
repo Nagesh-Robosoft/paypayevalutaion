@@ -1,4 +1,4 @@
-package com.test.pokemongo
+package com.test.newsapp
 
 import android.support.test.InstrumentationRegistry
 import android.support.test.runner.AndroidJUnit4

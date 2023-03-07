@@ -13,7 +13,7 @@ import com.test.newsapp.MyApplication
 import com.test.newsapp.di.component.DaggerActivityComponent
 import com.test.newsapp.di.module.ActivityModule
 import com.test.newsapp.ui.detail.NewsDetailActivity
-import com.test.pokemongo.R
+import com.test.newsapp.R
 import kotlinx.android.synthetic.main.fragment_home.*
 import javax.inject.Inject
 

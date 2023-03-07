@@ -1,4 +1,4 @@
-package com.test.pokemongo
+package com.test.newsapp
 
 import org.junit.Test
 

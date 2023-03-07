@@ -20,7 +20,7 @@ import com.bumptech.glide.request.target.Target
 import com.test.newsapp.data.model.Article
 import com.test.newsapp.ui.adapter.Adapter.MyViewHolder
 import com.test.newsapp.utils.Utils
-import com.test.pokemongo.R
+import com.test.newsapp.R
 
 class Adapter(
     articles: List<Article>,
