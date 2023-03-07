@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingStart="@dimen/dimen_15dp"
+    android:paddingTop="@dimen/dimen_15dp"
+    android:paddingEnd="@dimen/dimen_15dp">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageView"
+        android:layout_width="@dimen/popular_image_view_dimen"
+        android:layout_height="@dimen/popular_image_view_dimen"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="@dimen/dimen_15dp"
+        android:background="@color/grey_color"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imageView" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/newsHeader"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_15dp"
+        android:ellipsize="end"
+        android:lines="1"
+        android:textColor="@color/black"
+        android:textSize="@dimen/textSize_16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@id/imageView"
+        app:layout_constraintTop_toTopOf="@id/imageView"
+        tools:text="Commitment towards busisajhsasgjagshafsfahsafhs" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/newsDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_15dp"
+        android:layout_marginTop="@dimen/dimen_5dp"
+        android:ellipsize="end"
+        android:lines="2"
+        android:textColor="@color/light_grey"
+        android:textSize="@dimen/textSize_12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@id/imageView"
+        app:layout_constraintTop_toBottomOf="@id/newsHeader"
+        tools:text="Commitment towards busisajhsasgjagshafsfahsafhs In line with our mission to simplify lives, we were privileged to donat" />
+    <TextView
+        android:id="@+id/newsChannel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/round_white"
+        android:padding="@dimen/dimen_10dp"
+        android:layout_marginStart="@dimen/dimen_15dp"
+        app:layout_constraintStart_toEndOf="@id/imageView"
+        app:layout_constraintTop_toBottomOf="@id/newsDescription"
+        tools:text="CCN" />
+
+    <ImageView
+        android:id="@+id/imageBookMark"
+        android:layout_width="@dimen/bookmark_dimen"
+        android:layout_height="@dimen/bookmark_dimen"
+        android:layout_marginTop="@dimen/dimen_10dp"
+        android:src="@drawable/ic_launcher_foreground"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/newsChannel"
+        tools:ignore="ContentDescription" />
+</androidx.constraintlayout.widget.ConstraintLayout>
