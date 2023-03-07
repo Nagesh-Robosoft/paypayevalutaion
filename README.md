@@ -1,0 +1,2 @@
+# paypayevalutaion
+Global News app
