@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Times of India</string>
+    <string name="app_name">Global App</string>
     <string name="no_internet_warning">No internet!</string>
 
     <!--login-->
@@ -18,4 +18,5 @@
     </string>
     <string name="server_connection_error">Not able to connect, please retry again</string>
     <string name="network_login_again">Please log in again</string>
+    <string name="popular_news">Popular News</string>
 </resources>

@@ -103,7 +103,7 @@ class Adapter(
         var progressBar: ProgressBar
         var onItemClickListener: OnItemClickListener?
         override fun onClick(v: View) {
-            onItemClickListener!!.onItemClick(v, adapterPosition)
+            onItemClickListener?.onItemClick(v, adapterPosition)
         }
 
         init {
