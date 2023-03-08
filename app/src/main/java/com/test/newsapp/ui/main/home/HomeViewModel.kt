@@ -13,12 +13,10 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
-@ActivityScope
-class HomeViewModel @Inject constructor(
-    private val databaseService: DatabaseService,
-    private val newsRepository: NewsRepository,
-    private val compositeDisposable: CompositeDisposable
+class HomeViewModel constructor(
+    private val newsRepository: NewsRepository
 ) : ViewModel() {
+    private val compositeDisposable = CompositeDisposable()
 
     private var pageNum = 1
     var isPaginationDone = false
@@ -40,7 +38,6 @@ class HomeViewModel @Inject constructor(
                 .subscribe({
                     if (it.size < Constant.PAGE_SIZE) isPaginationDone = true else pageNum += 1
                     _newsLiveData.value = it
-                    insertBookmarkedArticle(it)
                 }, {
                     _newsFailedLiveData.value = true
                 })
@@ -49,41 +46,6 @@ class HomeViewModel @Inject constructor(
 
     fun isFirstPage() = pageNum <= 2
 
-    private fun insertBookmarkedArticle(list: List<Article>) {
-        list.forEach {
-            insertItem(it)
-        }
-    }
-
-    private fun insertItem(article: Article) {
-        compositeDisposable.add(
-            databaseService.getArticleDao().insertNewsArticle(article)
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.io())
-                .subscribe({
-                    Log.e("value inserted", article.title)
-                }, {
-                    Log.e("value failed to insert", article.title)
-                })
-        )
-    }
-
-    private fun bookMarkArticle(article: Article, isfav: Boolean) {
-        compositeDisposable.add(
-            databaseService.getArticleDao().saveOrRemoveBookmarkArticle(isfav, article.articleId)
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.io())
-                .subscribe({
-                    if (it is Int) {
-                        Log.e("value updated success ", article.title)
-                    } else
-                        Log.e("value updated failed ", article.title)
-
-                }, {
-                    Log.e("value failed to insert", article.title)
-                })
-        )
-    }
 
 
     override fun onCleared() {

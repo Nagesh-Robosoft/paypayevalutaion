@@ -16,11 +16,9 @@ import javax.inject.Inject
 
 @ActivityScope
 class NewsViewModel @Inject constructor(
-    private val databaseService: DatabaseService,
-    private val newsRepository: NewsRepository,
-    private val compositeDisposable: CompositeDisposable
-) : ViewModel() {
-
+    private val newsRepository: NewsRepository
+    ) : ViewModel() {
+    private val compositeDisposable = CompositeDisposable()
     private val _newsLiveData = MutableLiveData<List<Article>>()
     val newsLiveData: LiveData<List<Article>>
         get() = _newsLiveData
@@ -41,45 +39,9 @@ class NewsViewModel @Inject constructor(
                 .subscribeOn(Schedulers.io())
                 .subscribe({
                     _newsLiveData.value = it
-                    insertBookmarkedArticle(it)
+                    //insertBookmarkedArticle(it)
                 }, {
                     _newsFailedLiveData.value = true
-                })
-        )
-    }
-
-    private fun insertBookmarkedArticle(list: List<Article>) {
-        list.forEach {
-            insertItem(it)
-        }
-    }
-
-    private fun insertItem(article: Article) {
-        compositeDisposable.add(
-            databaseService.getArticleDao().insertNewsArticle(article)
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.io())
-                .subscribe({
-                    Log.e("value inserted", article.title)
-                }, {
-                    Log.e("value failed to insert", article.title)
-                })
-        )
-    }
-
-    private fun bookMarkArticle(article: Article , isfav : Boolean) {
-        compositeDisposable.add(
-            databaseService.getArticleDao().saveOrRemoveBookmarkArticle(isfav , article.articleId)
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.io())
-                .subscribe({
-                    if (it is Int) {
-                        Log.e("value updated success ", article.title)
-                    }else
-                        Log.e("value updated failed ", article.title)
-
-                }, {
-                    Log.e("value failed to insert", article.title)
                 })
         )
     }

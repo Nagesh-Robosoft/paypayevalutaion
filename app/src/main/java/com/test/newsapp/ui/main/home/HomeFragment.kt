@@ -15,11 +15,12 @@ import com.test.newsapp.di.module.ActivityModule
 import com.test.newsapp.ui.detail.NewsDetailActivity
 import com.test.pokemongo.R
 import kotlinx.android.synthetic.main.fragment_home.*
-import javax.inject.Inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeFragment : Fragment(), MultiViewTypeAdapter.ListItemClickListener {
-    @Inject
-    lateinit var viewModel: HomeViewModel
+
+    private val viewModel: HomeViewModel by viewModel()
+
     private lateinit var adapter: MultiViewTypeAdapter
     private var list: ArrayList<Model> = arrayListOf()
     override fun onCreateView(

@@ -5,6 +5,7 @@ import android.content.Context
 
 import com.test.newsapp.di.ActivityContext
 import com.test.newsapp.data.remote.NewsRepository
+import com.test.newsapp.viewmodels.NewsViewModel
 
 import dagger.Module
 import dagger.Provides
@@ -18,7 +19,7 @@ class ActivityModule(private val activity: Activity) {
     fun provideContext(): Context = activity
 
     @Provides
-    fun provideNewsRepository(): NewsRepository = NewsRepository()
+    fun provideNewsRepository(): NewsRepository = NewsRepository(NetworkModule())
 
     @Provides
     fun provideCompositeDisposable(): CompositeDisposable = CompositeDisposable()
