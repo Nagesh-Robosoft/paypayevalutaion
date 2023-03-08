@@ -7,8 +7,6 @@ import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 val presentationModuleMain = module {
-    factory { NetworkModule() }
-    factory { NewsRepository(get()) }
     viewModel {
         HomeViewModel( newsRepository= get())
     }
