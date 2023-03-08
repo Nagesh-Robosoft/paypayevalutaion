@@ -1,11 +1,11 @@
-package com.test.newsapp.ui.splash
+package com.test.pokemongo.ui.splash
 
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import com.test.newsapp.ui.base.BaseActivity
 import com.test.newsapp.ui.main.home.HomeActivity
-import com.test.newsapp.R
+import com.test.pokemongo.R
 
 /**
  * This class is the starting class of app.

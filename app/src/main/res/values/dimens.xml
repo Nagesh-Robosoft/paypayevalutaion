@@ -13,10 +13,4 @@
     <dimen name="dimen_5dp">5dp</dimen>
     <dimen name="dimen_10dp">10dp</dimen>
     <dimen name="bookmark_dimen">30dp</dimen>
-    <dimen name="textSize_18sp">18sp</dimen>
-    <dimen name="textSize_20sp">20sp</dimen>
-    <dimen name="dimen_20dp">20dp</dimen>
-    <dimen name="dimen_30dp">30dp</dimen>
-    <dimen name="dimen_25dp">25dp</dimen>
-    <dimen name="dimen_3dp">3dp</dimen>
 </resources>

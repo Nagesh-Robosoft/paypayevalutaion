@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.test.newsapp.R
+import com.test.pokemongo.R
 
 class MultiViewTypeAdapter(private val listItemClickListener: ListItemClickListener) :
     ListAdapter<Model, RecyclerView.ViewHolder>(ListItemCallback()) {

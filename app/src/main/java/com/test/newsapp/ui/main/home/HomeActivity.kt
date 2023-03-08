@@ -3,7 +3,7 @@ package com.test.newsapp.ui.main.home
 import android.os.Bundle
 import androidx.fragment.app.FragmentTransaction
 import com.test.newsapp.ui.base.BaseActivity
-import com.test.newsapp.R
+import com.test.pokemongo.R
 
 class HomeActivity : BaseActivity() {
     override fun provideLayout() = R.layout.activity_home

@@ -3,18 +3,20 @@ package com.test.newsapp.ui.main
 
 import android.os.Bundle
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.test.newsapp.MyApplication
 import com.test.newsapp.data.model.Article
+import com.test.newsapp.database.ArticleDao
 import com.test.newsapp.database.DatabaseService
 import com.test.newsapp.di.component.DaggerActivityComponent
 import com.test.newsapp.di.module.ActivityModule
 import com.test.newsapp.ui.adapter.Adapter
 import com.test.newsapp.ui.base.BaseActivity
 import com.test.newsapp.viewmodels.NewsViewModel
-import com.test.newsapp.R
+import com.test.pokemongo.R
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 import javax.inject.Inject

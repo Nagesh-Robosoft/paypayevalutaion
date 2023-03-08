@@ -20,7 +20,7 @@ import com.bumptech.glide.request.target.Target
 import com.test.newsapp.data.model.Article
 import com.test.newsapp.ui.adapter.Adapter.MyViewHolder
 import com.test.newsapp.utils.Utils
-import com.test.newsapp.R
+import com.test.pokemongo.R
 
 class Adapter(
     articles: List<Article>,
@@ -103,7 +103,7 @@ class Adapter(
         var progressBar: ProgressBar
         var onItemClickListener: OnItemClickListener?
         override fun onClick(v: View) {
-            onItemClickListener?.onItemClick(v, adapterPosition)
+            onItemClickListener!!.onItemClick(v, adapterPosition)
         }
 
         init {

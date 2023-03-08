@@ -13,7 +13,7 @@ import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.test.newsapp.utils.Utils
 import com.test.newsapp.utils.Utils.DateToTimeFormat
-import com.test.newsapp.R
+import com.test.pokemongo.R
 import kotlinx.android.synthetic.main.activity_news_detail.*
 
 class NewsDetailActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedListener {
