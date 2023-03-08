@@ -13,14 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-
-        <activity android:name="com.test.newsapp.ui.main.NewsHomeActivity" />
-
-        <activity android:name="com.test.newsapp.ui.main.home.HomeActivity" />
-
-
         <activity
-            android:name=".ui.splash.SplashActivity"
+            android:name="com.test.newsapp.ui.MainActivity"
             android:theme="@style/AppTheme"
             android:exported="true">
             <intent-filter>
@@ -29,10 +23,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity
-            android:name="com.test.newsapp.ui.detail.NewsDetailActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

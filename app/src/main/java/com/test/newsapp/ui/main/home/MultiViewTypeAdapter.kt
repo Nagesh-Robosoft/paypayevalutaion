@@ -100,6 +100,7 @@ class MultiViewTypeAdapter(private val listItemClickListener: ListItemClickListe
                 (holder as TopNewsViewHolder?)!!.newsHeader.text = model.text
                 Glide.with(holder.image.context)
                     .load(model.data?.urlToImage.orEmpty())
+                    .placeholder(R.drawable.ic_launcher_background)
                     .into(holder.image)
                 holder.newsHeader.text = model.data?.title.orEmpty()
                 holder.newsDescription.text = model.data?.description.orEmpty()
@@ -110,6 +111,7 @@ class MultiViewTypeAdapter(private val listItemClickListener: ListItemClickListe
                 (holder as PopularNewsViewHolder?)?.newsHeader?.text = model.text
                 Glide.with(holder.image.context)
                     .load(model.data?.urlToImage.orEmpty())
+                    .placeholder(R.drawable.ic_launcher_background)
                     .into(holder.image)
                 holder.newsHeader.text = model.data?.title.orEmpty()
                 holder.newsDescription.text = model.data?.description.orEmpty()

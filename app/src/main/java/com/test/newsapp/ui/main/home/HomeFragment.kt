@@ -1,6 +1,5 @@
 package com.test.newsapp.ui.main.home
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,7 +11,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.test.newsapp.MyApplication
 import com.test.newsapp.di.component.DaggerActivityComponent
 import com.test.newsapp.di.module.ActivityModule
-import com.test.newsapp.ui.detail.NewsDetailActivity
+import com.test.newsapp.ui.MainActivity
+import com.test.newsapp.ui.NewsDetailFragment
 import com.test.pokemongo.R
 import kotlinx.android.synthetic.main.fragment_home.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -97,13 +97,14 @@ class HomeFragment : Fragment(), MultiViewTypeAdapter.ListItemClickListener {
     }
 
     override fun onItemClick(item: Model, position: Int) {
-
-        val intent = Intent(activity, NewsDetailActivity::class.java)
+         val fragment = NewsDetailFragment.newInstance(item.data?.title.orEmpty(), item.data?.urlToImage.orEmpty(), item.data?.description.orEmpty())
+        (activity as? MainActivity)?.replaceFragmentAndAddToBackStack(fragment)
+/*        val intent = Intent(activity, NewsDetailActivity::class.java)
         intent.putExtra("url", item.data?.url.orEmpty())
         intent.putExtra("title", item.data?.url.orEmpty())
         intent.putExtra("date", item.data?.url.orEmpty())
         intent.putExtra("source", item.data?.url.orEmpty())
         intent.putExtra("author", item.data?.url.orEmpty())
-        startActivity(intent)
+        startActivity(intent)*/
     }
 }

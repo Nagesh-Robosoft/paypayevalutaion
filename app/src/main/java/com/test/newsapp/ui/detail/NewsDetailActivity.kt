@@ -8,7 +8,7 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
 import com.test.newsapp.utils.Utils
 import com.test.pokemongo.R
-import kotlinx.android.synthetic.main.activity_news_detail_new.*
+import kotlinx.android.synthetic.main.fragment_news_detail.*
 
 class NewsDetailActivity : AppCompatActivity() {
 
@@ -25,7 +25,7 @@ class NewsDetailActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_news_detail_new)
+        setContentView(R.layout.fragment_news_detail)
 
         val intent = intent
         mUrl = intent.getStringExtra("url")
