@@ -1,22 +1,16 @@
 package com.test.newsapp.ui.detail
 
 import android.os.Bundle
-
 import android.view.View
-import android.webkit.WebView
-import android.webkit.WebViewClient
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
-import com.google.android.material.appbar.AppBarLayout
-import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.test.newsapp.utils.Utils
-import com.test.newsapp.utils.Utils.DateToTimeFormat
 import com.test.pokemongo.R
-import kotlinx.android.synthetic.main.activity_news_detail.*
+import kotlinx.android.synthetic.main.activity_news_detail_new.*
 
-class NewsDetailActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedListener {
+class NewsDetailActivity : AppCompatActivity() {
 
     private var isHideToolbarView = false
 
@@ -26,17 +20,12 @@ class NewsDetailActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedList
     private var mDate: String? = null
     private var mSource: String? = null
     private var mAuthor: String? = null
+    private var mDescription: String? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_news_detail)
-       // setSupportActionBar(toolbar)
-        supportActionBar?.title = ""
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        val collapsingToolbarLayout =
-            findViewById<CollapsingToolbarLayout>(R.id.collapsing_toolbar)
-        collapsingToolbarLayout.title = ""
+        setContentView(R.layout.activity_news_detail_new)
 
         val intent = intent
         mUrl = intent.getStringExtra("url")
@@ -45,6 +34,7 @@ class NewsDetailActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedList
         mDate = intent.getStringExtra("date")
         mSource = intent.getStringExtra("source")
         mAuthor = intent.getStringExtra("author")
+        mDescription = intent.getStringExtra("description")
 
         val requestOptions = RequestOptions()
         requestOptions.error(Utils.randomDrawbleColor)
@@ -52,26 +42,19 @@ class NewsDetailActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedList
             .load(mImg)
             .apply(requestOptions)
             .transition(DrawableTransitionOptions.withCrossFade())
-            .into(backdrop)
-
-        title_on_appbar.text = mSource
-        subtitle_on_appbar.text = mUrl
-        date.text = Utils.DateFormat(mDate);
-
-        appbarTitle.text = mTitle
-        val author: String
-        author = if (mAuthor != null) {
-            " \u2022 $mAuthor"
-        } else {
-            ""
+            .into(ivNewsImage)
+        ivNewsHeader.text = mTitle
+        if(mDescription?.trim()?.isNotEmpty() == true){
+            tvNewsDescription.text = mDescription?.trim()
+            tvNewsDescription.visibility = View.VISIBLE
+        }else{
+            tvNewsDescription.visibility = View.GONE
         }
-        time.text = "$mSource$author \u2022 " + DateToTimeFormat(
-            mDate
-        )
-        initWebView(mUrl)
+
+        //initWebView(mUrl)
     }
 
-    private fun initWebView(url: String?) {
+/*    private fun initWebView(url: String?) {
         val webView = findViewById<WebView>(R.id.webView)
         webView.settings.loadsImagesAutomatically = true
         webView.settings.javaScriptEnabled = true
@@ -82,7 +65,7 @@ class NewsDetailActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedList
         webView.scrollBarStyle = View.SCROLLBARS_INSIDE_OVERLAY
         webView.webViewClient = WebViewClient()
         webView.loadUrl(url.orEmpty())
-    }
+    }*/
 
     override fun onBackPressed() {
         super.onBackPressed()
@@ -94,7 +77,7 @@ class NewsDetailActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedList
         return true
     }
 
-    override fun onOffsetChanged(
+/*    override fun onOffsetChanged(
         appBarLayout: AppBarLayout,
         verticalOffset: Int
     ) {
@@ -110,33 +93,33 @@ class NewsDetailActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedList
             title_appbar.visibility = View.GONE
             isHideToolbarView = !isHideToolbarView
         }
-    }
+    }*/
 
     /* @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_news, menu);
         return true;
     }*/
-   /* override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        val id = item.itemId
-        if (id == R.id.view_web) {
-            val i = Intent(Intent.ACTION_VIEW)
-            i.data = Uri.parse(mUrl)
-            startActivity(i)
-            return true
-        } else if (id == R.id.share) {
-            try {
-                val i = Intent(Intent.ACTION_SEND)
-                i.type = "text/plan"
-                i.putExtra(Intent.EXTRA_SUBJECT, mSource)
-                val body =
-                    "$mTitle\n$mUrl\nShare from the News App\n"
-                i.putExtra(Intent.EXTRA_TEXT, body)
-                startActivity(Intent.createChooser(i, "Share with :"))
-            } catch (e: Exception) {
-                Toast.makeText(this, "Hmm.. Sorry, \nCannot be share", Toast.LENGTH_SHORT).show()
-            }
-        }
-        return super.onOptionsItemSelected(item)
-    }*/
+    /* override fun onOptionsItemSelected(item: MenuItem): Boolean {
+         val id = item.itemId
+         if (id == R.id.view_web) {
+             val i = Intent(Intent.ACTION_VIEW)
+             i.data = Uri.parse(mUrl)
+             startActivity(i)
+             return true
+         } else if (id == R.id.share) {
+             try {
+                 val i = Intent(Intent.ACTION_SEND)
+                 i.type = "text/plan"
+                 i.putExtra(Intent.EXTRA_SUBJECT, mSource)
+                 val body =
+                     "$mTitle\n$mUrl\nShare from the News App\n"
+                 i.putExtra(Intent.EXTRA_TEXT, body)
+                 startActivity(Intent.createChooser(i, "Share with :"))
+             } catch (e: Exception) {
+                 Toast.makeText(this, "Hmm.. Sorry, \nCannot be share", Toast.LENGTH_SHORT).show()
+             }
+         }
+         return super.onOptionsItemSelected(item)
+     }*/
 }
