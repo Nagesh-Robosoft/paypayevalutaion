@@ -73,10 +73,10 @@ As per a recently published report by Dabang Dunia’s Mumbai Edition, Maharasht
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dimen_25dp"
-            android:textSize="@dimen/textSize_20sp"
-            android:textStyle="bold"
             android:text="@string/popular_news"
             android:textColor="@color/black"
+            android:textSize="@dimen/textSize_20sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvNewsDescription"
             tools:text="@string/popular_news" />

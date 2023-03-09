@@ -56,14 +56,15 @@
         app:layout_constraintStart_toEndOf="@id/imageView"
         app:layout_constraintTop_toBottomOf="@id/newsHeader"
         tools:text="Commitment towards busisajhsasgjagshafsfahsafhs In line with our mission to simplify lives, we were privileged to donat" />
+
     <TextView
         android:id="@+id/newsChannel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_15dp"
         android:layout_marginTop="10dp"
         android:background="@drawable/round_white"
         android:padding="@dimen/dimen_10dp"
-        android:layout_marginStart="@dimen/dimen_15dp"
         app:layout_constraintStart_toEndOf="@id/imageView"
         app:layout_constraintTop_toBottomOf="@id/newsDescription"
         tools:text="CCN" />
