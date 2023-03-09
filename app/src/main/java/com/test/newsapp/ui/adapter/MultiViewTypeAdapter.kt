@@ -1,17 +1,16 @@
 package com.test.newsapp.ui.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.test.newsapp.ui.model.Model
 import com.test.newsapp.utils.Utils
-import com.test.pokemongo.R
+import com.test.pokemongo.databinding.ItemHeaderBinding
+import com.test.pokemongo.databinding.ItemPopularNewsBinding
+import com.test.pokemongo.databinding.ItemTopNewsBinding
 
 class MultiViewTypeAdapter(private val listItemClickListener: ListItemClickListener) :
     ListAdapter<Model, RecyclerView.ViewHolder>(ListItemCallback()) {
@@ -31,43 +30,32 @@ class MultiViewTypeAdapter(private val listItemClickListener: ListItemClickListe
         }
     }
 
-    class HeaderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var newsTopHeader: TextView = itemView.findViewById(R.id.newsTopHeader)
-    }
+    class HeaderViewHolder(var binding: ItemHeaderBinding) : RecyclerView.ViewHolder(binding.root)
 
-    class TopNewsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var newsHeader: TextView = itemView.findViewById(R.id.newsHeader)
-        var image: ImageView = itemView.findViewById(R.id.imageView) as ImageView
-        var newsDescription: TextView = itemView.findViewById(R.id.newsDescription)
-        var newsChannel: TextView = itemView.findViewById(R.id.newsChannel)
-    }
+    class TopNewsViewHolder(var binding: ItemTopNewsBinding) : RecyclerView.ViewHolder(binding.root)
 
-    class PopularNewsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var newsHeader: TextView = itemView.findViewById(R.id.newsHeader)
-        var image: ImageView = itemView.findViewById(R.id.imageView) as ImageView
-        var newsDescription: TextView = itemView.findViewById(R.id.newsDescription)
-        var newsChannel: TextView = itemView.findViewById(R.id.newsChannel)
-    }
+    class PopularNewsViewHolder(var binding: ItemPopularNewsBinding) :
+        RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(
         parent: ViewGroup, viewType: Int
     ): RecyclerView.ViewHolder {
-        val view: View
         when (viewType) {
             Model.HEADER_TEXT_TYPE -> {
-                view =
-                    LayoutInflater.from(parent.context).inflate(R.layout.item_header, parent, false)
-                return HeaderViewHolder(view)
+                val binding =
+                    ItemHeaderBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+                return HeaderViewHolder(binding)
             }
             Model.TOP_NEWS_TYPE -> {
-                view = LayoutInflater.from(parent.context)
-                    .inflate(R.layout.item_top_news, parent, false)
-                return TopNewsViewHolder(view)
+                val binding =
+                    ItemTopNewsBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+                return TopNewsViewHolder(binding)
             }
             else -> {
-                view = LayoutInflater.from(parent.context)
-                    .inflate(R.layout.item_popular_news, parent, false)
-                return PopularNewsViewHolder(view)
+                val binding = ItemPopularNewsBinding.inflate(
+                    LayoutInflater.from(parent.context), parent, false
+                )
+                return PopularNewsViewHolder(binding)
             }
         }
     }
@@ -95,23 +83,30 @@ class MultiViewTypeAdapter(private val listItemClickListener: ListItemClickListe
             listItemClickListener.onItemClick(model, position)
         }
         when (model.type) {
-            Model.HEADER_TEXT_TYPE -> (holder as HeaderViewHolder?)?.newsTopHeader?.text =
+            Model.HEADER_TEXT_TYPE -> (holder as HeaderViewHolder?)?.binding?.newsTopHeader?.text =
                 model.text
             Model.TOP_NEWS_TYPE -> {
-                (holder as TopNewsViewHolder?)!!.newsHeader.text = model.text
-                Glide.with(holder.image.context).load(model.data?.urlToImage.orEmpty())
-                    .placeholder(Utils.randomDrawableColor).into(holder.image)
-                holder.newsHeader.text = model.data?.title.orEmpty()
-                holder.newsDescription.text = model.data?.description.orEmpty()
-                holder.newsChannel.text = model.data?.source?.name.orEmpty()
+                (holder as TopNewsViewHolder?)?.binding?.let { topNewsViewHolder ->
+                    topNewsViewHolder.newsHeader.text = model.text
+                    Glide.with(topNewsViewHolder.imageView.context)
+                        .load(model.data?.urlToImage.orEmpty())
+                        .placeholder(Utils.randomDrawableColor).into(topNewsViewHolder.imageView)
+                    topNewsViewHolder.newsHeader.text = model.data?.title.orEmpty()
+                    topNewsViewHolder.newsDescription.text = model.data?.description.orEmpty()
+                    topNewsViewHolder.newsChannel.text = model.data?.source?.name.orEmpty()
+                }
             }
             Model.POPULAR_NEWS_TYPE -> {
-                (holder as PopularNewsViewHolder?)?.newsHeader?.text = model.text
-                Glide.with(holder.image.context).load(model.data?.urlToImage.orEmpty())
-                    .placeholder(Utils.randomDrawableColor).into(holder.image)
-                holder.newsHeader.text = model.data?.title.orEmpty()
-                holder.newsDescription.text = model.data?.description.orEmpty()
-                holder.newsChannel.text = model.data?.source?.name.orEmpty()
+                (holder as PopularNewsViewHolder?)?.binding?.let { popularNewsViewHolder ->
+                    popularNewsViewHolder.newsHeader.text = model.text
+                    Glide.with(popularNewsViewHolder.imageView.context)
+                        .load(model.data?.urlToImage.orEmpty())
+                        .placeholder(Utils.randomDrawableColor)
+                        .into(popularNewsViewHolder.imageView)
+                    popularNewsViewHolder.newsHeader.text = model.data?.title.orEmpty()
+                    popularNewsViewHolder.newsDescription.text = model.data?.description.orEmpty()
+                    popularNewsViewHolder.newsChannel.text = model.data?.source?.name.orEmpty()
+                }
             }
         }
     }
