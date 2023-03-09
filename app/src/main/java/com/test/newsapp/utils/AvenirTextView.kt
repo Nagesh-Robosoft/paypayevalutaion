@@ -19,7 +19,7 @@ class AvenirTextView : AppCompatTextView {
         init()
     }
 
-    fun init() {
+    private fun init() {
         val tf = Typeface.createFromAsset(context.assets, "AvenirLTStd-Book.ttf")
         typeface = tf
     }
