@@ -37,7 +37,7 @@ class NewsDetailActivity : AppCompatActivity() {
         mDescription = intent.getStringExtra("description")
 
         val requestOptions = RequestOptions()
-        requestOptions.error(Utils.randomDrawbleColor)
+        requestOptions.error(Utils.randomDrawableColor)
         Glide.with(this)
             .load(mImg)
             .apply(requestOptions)

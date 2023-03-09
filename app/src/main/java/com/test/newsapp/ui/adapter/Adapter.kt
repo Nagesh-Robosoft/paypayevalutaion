@@ -38,8 +38,8 @@ class Adapter(
     override fun onBindViewHolder(holders: MyViewHolder, position: Int) {
         val model: Article = articles[position]
         val requestOptions = RequestOptions()
-        requestOptions.placeholder(Utils.randomDrawbleColor)
-        requestOptions.error(Utils.randomDrawbleColor)
+        requestOptions.placeholder(Utils.randomDrawableColor)
+        requestOptions.error(Utils.randomDrawableColor)
         requestOptions.diskCacheStrategy(DiskCacheStrategy.ALL)
         requestOptions.centerCrop()
         Glide.with(context)
@@ -72,8 +72,8 @@ class Adapter(
         holders.title.text = model.title
         holders.desc.text = model.description
        // holders.source.text = model.source.name
-        holders.time.text = " \u2022 " + Utils.DateToTimeFormat(model.publishedAt)
-        holders.published_ad.text = Utils.DateFormat(model.publishedAt)
+        holders.time.text = " \u2022 " + Utils.dateToTimeFormat(model.publishedAt)
+        holders.published_ad.text = Utils.dateFormat(model.publishedAt)
         holders.author.text = model.author
     }
 

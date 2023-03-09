@@ -104,7 +104,6 @@ class MultiViewTypeAdapter(private val listItemClickListener: ListItemClickListe
                     .into(holder.image)
                 holder.newsHeader.text = model.data?.title.orEmpty()
                 holder.newsDescription.text = model.data?.description.orEmpty()
-                //holder.newsChannel.text = model.data?.source?.name
                 holder.newsChannel.text = "CNN"
             }
             Model.POPULAR_NEWS_TYPE -> {
@@ -115,7 +114,6 @@ class MultiViewTypeAdapter(private val listItemClickListener: ListItemClickListe
                     .into(holder.image)
                 holder.newsHeader.text = model.data?.title.orEmpty()
                 holder.newsDescription.text = model.data?.description.orEmpty()
-                //holder.newsChannel.text = model.data?.source?.name
                 holder.newsChannel.text = "CNN"
             }
         }

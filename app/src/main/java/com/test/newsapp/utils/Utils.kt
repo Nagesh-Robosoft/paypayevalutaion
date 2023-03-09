@@ -19,14 +19,14 @@ object Utils {
         ColorDrawable(Color.parseColor("#d93947"))
     )
 
-    val randomDrawbleColor: ColorDrawable
+    val randomDrawableColor: ColorDrawable
         get() {
             val idx =
                 Random().nextInt(vibrantLightColorList.size)
             return vibrantLightColorList[idx]
         }
 
-    fun DateToTimeFormat(oldstringDate: String?): String? {
+    fun dateToTimeFormat(oldStringDate: String?): String? {
         val p = PrettyTime(Locale(country))
         var isTime: String? = null
         try {
@@ -34,7 +34,7 @@ object Utils {
                 "yyyy-MM-dd'T'HH:mm:ss'Z'",
                 Locale.ENGLISH
             )
-            val date = sdf.parse(oldstringDate)
+            val date = sdf.parse(oldStringDate)
             isTime = p.format(date)
         } catch (e: ParseException) {
             e.printStackTrace()
@@ -42,7 +42,7 @@ object Utils {
         return isTime
     }
 
-    fun DateFormat(oldstringDate: String?): String {
+    fun dateFormat(oldStringDate: String?): String {
         val newDate: String
         val dateFormat = SimpleDateFormat(
             "E, d MMM yyyy",
@@ -50,26 +50,19 @@ object Utils {
         )
         newDate = try {
             val date =
-                SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'").parse(oldstringDate)
+                SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'").parse(oldStringDate)
             dateFormat.format(date)
         } catch (e: ParseException) {
             e.printStackTrace()
-            oldstringDate.toString()
+            oldStringDate.toString()
         }
         return newDate
     }
 
-    val country: String
+    private val country: String
         get() {
             val locale = Locale.getDefault()
             val country = locale.country.toString()
-            return country.toLowerCase()
-        }
-
-    val language: String
-        get() {
-            val locale = Locale.getDefault()
-            val country = locale.language.toString()
-            return country.toLowerCase()
+            return country.toLowerCase(Locale.ROOT)
         }
 }

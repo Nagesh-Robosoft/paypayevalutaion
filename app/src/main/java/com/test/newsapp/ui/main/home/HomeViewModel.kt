@@ -1,17 +1,13 @@
 package com.test.newsapp.ui.main.home
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.test.newsapp.di.ActivityScope
 import com.test.newsapp.data.model.Article
 import com.test.newsapp.data.remote.NewsRepository
-import com.test.newsapp.database.DatabaseService
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
-import javax.inject.Inject
 
 class HomeViewModel constructor(
     private val newsRepository: NewsRepository

@@ -26,7 +26,7 @@ class NewsDetailFragment : Fragment() {
 
     private fun initViews() {
         val requestOptions = RequestOptions()
-        requestOptions.error(Utils.randomDrawbleColor)
+        requestOptions.error(Utils.randomDrawableColor)
         Glide.with(this).load(arguments?.getString(KEY_IMAGE_URL)).apply(requestOptions)
             .transition(DrawableTransitionOptions.withCrossFade()).into(ivNewsImage)
         ivNewsHeader.text = arguments?.getString(KEY_HEADLINE)

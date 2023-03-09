@@ -36,10 +36,10 @@ class HomeFragment : Fragment(), MultiViewTypeAdapter.ListItemClickListener {
     }
 
     private fun readLiveData() {
-        viewModel.newsFailedLiveData.observe(this, androidx.lifecycle.Observer {
+        viewModel.newsFailedLiveData.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
             Toast.makeText(activity, "failed", Toast.LENGTH_LONG).show()
         })
-        viewModel.newsLiveData.observe(this, androidx.lifecycle.Observer {
+        viewModel.newsLiveData.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
             if (viewModel.isFirstPage()) {
                 val tempList: ArrayList<Model> = arrayListOf()
                 val topNewsModel = Model(id = "Top News", text = "Top News", type = Model.HEADER_TEXT_TYPE, data = null)
