@@ -8,9 +8,6 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.test.newsapp.MyApplication
-import com.test.newsapp.di.component.DaggerActivityComponent
-import com.test.newsapp.di.module.ActivityModule
 import com.test.newsapp.ui.MainActivity
 import com.test.newsapp.ui.NewsDetailFragment
 import com.test.pokemongo.R
@@ -33,19 +30,11 @@ class HomeFragment : Fragment(), MultiViewTypeAdapter.ListItemClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        getDependencies()
         setUpRecyclerView()
         readLiveData()
         viewModel.getNews()
     }
-    private fun getDependencies() {
-        DaggerActivityComponent
-            .builder()
-            .applicationComponent((activity?.application as MyApplication).applicationComponent)
-            .activityModule(ActivityModule(activity!!))
-            .build()
-            .inject(this)
-    }
+
     private fun readLiveData() {
         viewModel.newsFailedLiveData.observe(this, androidx.lifecycle.Observer {
             Toast.makeText(activity, "failed", Toast.LENGTH_LONG).show()
@@ -99,12 +88,5 @@ class HomeFragment : Fragment(), MultiViewTypeAdapter.ListItemClickListener {
     override fun onItemClick(item: Model, position: Int) {
          val fragment = NewsDetailFragment.newInstance(item.data?.title.orEmpty(), item.data?.urlToImage.orEmpty(), item.data?.description.orEmpty())
         (activity as? MainActivity)?.replaceFragmentAndAddToBackStack(fragment)
-/*        val intent = Intent(activity, NewsDetailActivity::class.java)
-        intent.putExtra("url", item.data?.url.orEmpty())
-        intent.putExtra("title", item.data?.url.orEmpty())
-        intent.putExtra("date", item.data?.url.orEmpty())
-        intent.putExtra("source", item.data?.url.orEmpty())
-        intent.putExtra("author", item.data?.url.orEmpty())
-        startActivity(intent)*/
     }
 }
