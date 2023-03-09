@@ -1,31 +1,28 @@
 package com.test.newsapp.data.model
 
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.PrimaryKey
+import com.google.gson.annotations.Expose
+import com.google.gson.annotations.SerializedName
 
-@Entity(tableName = "article")
 data class Article(
-    @PrimaryKey(autoGenerate = true) var articleId: Int = 0,
+    @SerializedName("articleId") @Expose var articleId: Int = 0,
 
-    @ColumnInfo(name = "author") val author: String,
+    @SerializedName("author") @Expose val author: String,
 
-    @ColumnInfo(name = "content") val content: String,
+    @SerializedName("content") @Expose val content: String,
 
-    @ColumnInfo(name = "description") val description: String,
+    @SerializedName("description") @Expose val description: String,
 
-    @ColumnInfo(name = "publishedAt") val publishedAt: String,
+    @SerializedName("publishedAt") @Expose val publishedAt: String,
 
-    //@ColumnInfo(name = "source")
-    //val source: Source,
+    @SerializedName("source") @Expose val source: Source,
 
-    @ColumnInfo(name = "title") val title: String,
+    @SerializedName("title") @Expose val title: String,
 
-    @ColumnInfo(name = "url") val url: String,
+    @SerializedName("url") @Expose val url: String,
 
-    @ColumnInfo(name = "urlToImage") val urlToImage: String,
+    @SerializedName("urlToImage") @Expose val urlToImage: String,
 
-    @ColumnInfo(name = "bookmark") val isBookMarked: Boolean = false
+    @SerializedName("isBookMarked") @Expose val isBookMarked: Boolean = false
 
 
 ) {
@@ -40,3 +37,7 @@ data class Article(
         }
     }
 }
+
+data class Source(
+    @SerializedName("id") @Expose var id: String, @SerializedName("name") @Expose var name: String
+)

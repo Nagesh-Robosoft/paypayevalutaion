@@ -103,7 +103,7 @@ class MultiViewTypeAdapter(private val listItemClickListener: ListItemClickListe
                     .placeholder(Utils.randomDrawableColor).into(holder.image)
                 holder.newsHeader.text = model.data?.title.orEmpty()
                 holder.newsDescription.text = model.data?.description.orEmpty()
-                holder.newsChannel.text = holder.image.context.getString(R.string.cnn)
+                holder.newsChannel.text = model.data?.source?.name.orEmpty()
             }
             Model.POPULAR_NEWS_TYPE -> {
                 (holder as PopularNewsViewHolder?)?.newsHeader?.text = model.text
@@ -111,7 +111,7 @@ class MultiViewTypeAdapter(private val listItemClickListener: ListItemClickListe
                     .placeholder(Utils.randomDrawableColor).into(holder.image)
                 holder.newsHeader.text = model.data?.title.orEmpty()
                 holder.newsDescription.text = model.data?.description.orEmpty()
-                holder.newsChannel.text = holder.image.context.getString(R.string.cnn)
+                holder.newsChannel.text = model.data?.source?.name.orEmpty()
             }
         }
     }
