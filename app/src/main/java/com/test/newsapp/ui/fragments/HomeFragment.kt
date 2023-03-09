@@ -23,9 +23,7 @@ class HomeFragment : Fragment(), MultiViewTypeAdapter.ListItemClickListener {
     private lateinit var adapter: MultiViewTypeAdapter
     private var list: ArrayList<Model> = arrayListOf()
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
@@ -44,22 +42,46 @@ class HomeFragment : Fragment(), MultiViewTypeAdapter.ListItemClickListener {
         viewModel.newsLiveData.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
             if (viewModel.isFirstPage()) {
                 val tempList: ArrayList<Model> = arrayListOf()
-                val topNewsModel = Model(id = "Top News", text = "Top News", type = Model.HEADER_TEXT_TYPE, data = null)
+                val topNewsModel = Model(
+                    id = "Top News", text = "Top News", type = Model.HEADER_TEXT_TYPE, data = null
+                )
                 tempList.add(topNewsModel)
-                val topNews =
-                    Model(id = it.first().articleId.toString(), data = it.first(), type = Model.TOP_NEWS_TYPE, text = "")
+                val topNews = Model(
+                    id = it.first().articleId.toString(),
+                    data = it.first(),
+                    type = Model.TOP_NEWS_TYPE,
+                    text = ""
+                )
                 if (it.isNotEmpty()) tempList.add(topNews)
-                val popularNewsModel =
-                    Model(id = "Popular News", text = "Popular News", type = Model.HEADER_TEXT_TYPE, data = null)
+                val popularNewsModel = Model(
+                    id = "Popular News",
+                    text = "Popular News",
+                    type = Model.HEADER_TEXT_TYPE,
+                    data = null
+                )
                 tempList.add(popularNewsModel)
-                it.subList(1, it.size - 1).forEach {
-                    tempList.add(Model(id = it.articleId.toString(), data = it, type = Model.POPULAR_NEWS_TYPE, text = ""))
+                it.subList(1, it.size - 1).forEach { article ->
+                    tempList.add(
+                        Model(
+                            id = article.articleId.toString(),
+                            data = article,
+                            type = Model.POPULAR_NEWS_TYPE,
+                            text = ""
+                        )
+                    )
                 }
                 list.clear()
                 list.addAll(tempList)
             } else {
-                it.forEach {
-                    list.add(Model(id = it.articleId.toString(), data = it, type = Model.POPULAR_NEWS_TYPE, text = ""))
+                it.forEach { article ->
+                    list.add(
+                        Model(
+                            id = article.articleId.toString(),
+                            data = article,
+                            type = Model.POPULAR_NEWS_TYPE,
+                            text = ""
+                        )
+                    )
                 }
             }
             adapter.updateData(list)
@@ -71,8 +93,7 @@ class HomeFragment : Fragment(), MultiViewTypeAdapter.ListItemClickListener {
         adapter = MultiViewTypeAdapter(this)
         adapter.updateData(ArrayList())
         homeNewsRecyclerView.layoutManager = LinearLayoutManager(
-            context,
-            LinearLayoutManager.VERTICAL, false
+            context, LinearLayoutManager.VERTICAL, false
         )
         homeNewsRecyclerView.adapter = adapter
         homeNewsRecyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
@@ -88,7 +109,11 @@ class HomeFragment : Fragment(), MultiViewTypeAdapter.ListItemClickListener {
     }
 
     override fun onItemClick(item: Model, position: Int) {
-         val fragment = NewsDetailFragment.newInstance(item.data?.title.orEmpty(), item.data?.urlToImage.orEmpty(), item.data?.description.orEmpty())
+        val fragment = NewsDetailFragment.newInstance(
+            item.data?.title.orEmpty(),
+            item.data?.urlToImage.orEmpty(),
+            item.data?.description.orEmpty()
+        )
         (activity as? MainActivity)?.replaceFragmentAndAddToBackStack(fragment)
     }
 }

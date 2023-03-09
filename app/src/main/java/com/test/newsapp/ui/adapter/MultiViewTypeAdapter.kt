@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.test.newsapp.ui.model.Model
+import com.test.newsapp.utils.Utils
 import com.test.pokemongo.R
 
 class MultiViewTypeAdapter(private val listItemClickListener: ListItemClickListener) :
@@ -49,14 +50,13 @@ class MultiViewTypeAdapter(private val listItemClickListener: ListItemClickListe
     }
 
     override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int
+        parent: ViewGroup, viewType: Int
     ): RecyclerView.ViewHolder {
         val view: View
         when (viewType) {
             Model.HEADER_TEXT_TYPE -> {
-                view = LayoutInflater.from(parent.context)
-                    .inflate(R.layout.item_header, parent, false)
+                view =
+                    LayoutInflater.from(parent.context).inflate(R.layout.item_header, parent, false)
                 return HeaderViewHolder(view)
             }
             Model.TOP_NEWS_TYPE -> {
@@ -99,23 +99,19 @@ class MultiViewTypeAdapter(private val listItemClickListener: ListItemClickListe
                 model.text
             Model.TOP_NEWS_TYPE -> {
                 (holder as TopNewsViewHolder?)!!.newsHeader.text = model.text
-                Glide.with(holder.image.context)
-                    .load(model.data?.urlToImage.orEmpty())
-                    .placeholder(R.drawable.ic_launcher_background)
-                    .into(holder.image)
+                Glide.with(holder.image.context).load(model.data?.urlToImage.orEmpty())
+                    .placeholder(Utils.randomDrawableColor).into(holder.image)
                 holder.newsHeader.text = model.data?.title.orEmpty()
                 holder.newsDescription.text = model.data?.description.orEmpty()
-                holder.newsChannel.text = "CNN"
+                holder.newsChannel.text = holder.image.context.getString(R.string.cnn)
             }
             Model.POPULAR_NEWS_TYPE -> {
                 (holder as PopularNewsViewHolder?)?.newsHeader?.text = model.text
-                Glide.with(holder.image.context)
-                    .load(model.data?.urlToImage.orEmpty())
-                    .placeholder(R.drawable.ic_launcher_background)
-                    .into(holder.image)
+                Glide.with(holder.image.context).load(model.data?.urlToImage.orEmpty())
+                    .placeholder(Utils.randomDrawableColor).into(holder.image)
                 holder.newsHeader.text = model.data?.title.orEmpty()
                 holder.newsDescription.text = model.data?.description.orEmpty()
-                holder.newsChannel.text = "CNN"
+                holder.newsChannel.text = holder.image.context.getString(R.string.cnn)
             }
         }
     }

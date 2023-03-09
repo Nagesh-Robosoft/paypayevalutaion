@@ -42,8 +42,6 @@ class HomeViewModel constructor(
 
     fun isFirstPage() = pageNum <= 2
 
-
-
     override fun onCleared() {
         super.onCleared()
         pageNum = 1

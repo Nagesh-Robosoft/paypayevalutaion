@@ -8,12 +8,12 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class NetworkModule {
 
-    private val BASE_URL = "https://newsapi.org/v2/"
+    private val baseUrl = "https://newsapi.org/v2/"
 
     internal fun provideRetrofitService(): ApiNewsInterface {
-        return Retrofit.Builder().baseUrl(BASE_URL)
+        return Retrofit.Builder().baseUrl(baseUrl)
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-            .addConverterFactory(GsonConverterFactory.create())
-            .build().create(ApiNewsInterface::class.java)
+            .addConverterFactory(GsonConverterFactory.create()).build()
+            .create(ApiNewsInterface::class.java)
     }
 }

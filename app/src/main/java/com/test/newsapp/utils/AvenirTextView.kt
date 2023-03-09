@@ -1,4 +1,4 @@
-package com.test.pokemongo.utils
+package com.test.newsapp.utils
 
 import android.content.Context
 import android.graphics.Typeface
