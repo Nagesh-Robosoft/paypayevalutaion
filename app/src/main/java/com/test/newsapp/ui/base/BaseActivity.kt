@@ -11,6 +11,6 @@ abstract  class BaseActivity  : AppCompatActivity(){
         setContentView(provideLayout())
     }
 
-    abstract protected  fun provideLayout() : Int
+    protected abstract fun provideLayout() : Int
 
 }

@@ -3,6 +3,7 @@ package com.test.newsapp.ui.main.home
 import android.os.Bundle
 import androidx.fragment.app.FragmentTransaction
 import com.test.newsapp.ui.base.BaseActivity
+import com.test.newsapp.ui.fragments.HomeFragment
 import com.test.pokemongo.R
 
 class HomeActivity : BaseActivity() {

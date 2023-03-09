@@ -1,9 +1,9 @@
-package com.test.newsapp.ui
+package com.test.newsapp.ui.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.test.newsapp.ui.main.home.HomeFragment
+import com.test.newsapp.ui.fragments.HomeFragment
 import com.test.pokemongo.R
 
 class MainActivity : AppCompatActivity() {

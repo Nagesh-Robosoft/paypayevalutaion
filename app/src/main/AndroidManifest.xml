@@ -14,7 +14,7 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name="com.test.newsapp.ui.MainActivity"
+            android:name="com.test.newsapp.ui.activity.MainActivity"
             android:theme="@style/AppTheme"
             android:exported="true">
             <intent-filter>

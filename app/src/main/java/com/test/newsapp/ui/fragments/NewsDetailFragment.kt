@@ -1,4 +1,4 @@
-package com.test.newsapp.ui
+package com.test.newsapp.ui.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
