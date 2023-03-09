@@ -9,9 +9,9 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.test.newsapp.ui.activity.MainActivity
-import com.test.newsapp.ui.main.home.HomeViewModel
-import com.test.newsapp.ui.main.home.Model
-import com.test.newsapp.ui.main.home.MultiViewTypeAdapter
+import com.test.newsapp.viewmodels.HomeViewModel
+import com.test.newsapp.ui.model.Model
+import com.test.newsapp.ui.adapter.MultiViewTypeAdapter
 import com.test.pokemongo.R
 import kotlinx.android.synthetic.main.fragment_home.*
 import org.koin.androidx.viewmodel.ext.android.viewModel

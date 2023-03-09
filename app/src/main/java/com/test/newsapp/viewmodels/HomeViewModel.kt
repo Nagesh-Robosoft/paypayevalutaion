@@ -1,4 +1,4 @@
-package com.test.newsapp.ui.main.home
+package com.test.newsapp.viewmodels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
