@@ -43,7 +43,7 @@ class HomeFragment : Fragment(), MultiViewTypeAdapter.ListItemClickListener {
             if (viewModel.isFirstPage()) {
                 val tempList: ArrayList<Model> = arrayListOf()
                 val topNewsModel = Model(
-                    id = "Top News", text = "Top News", type = Model.HEADER_TEXT_TYPE, data = null
+                    id = getString(R.string.top_news), text = getString(R.string.top_news), type = Model.HEADER_TEXT_TYPE, data = null
                 )
                 tempList.add(topNewsModel)
                 val topNews = Model(
@@ -54,8 +54,8 @@ class HomeFragment : Fragment(), MultiViewTypeAdapter.ListItemClickListener {
                 )
                 if (it.isNotEmpty()) tempList.add(topNews)
                 val popularNewsModel = Model(
-                    id = "Popular News",
-                    text = "Popular News",
+                    id = getString(R.string.popular_news),
+                    text = getString(R.string.popular_news),
                     type = Model.HEADER_TEXT_TYPE,
                     data = null
                 )
